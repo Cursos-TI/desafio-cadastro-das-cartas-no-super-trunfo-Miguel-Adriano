@@ -3,14 +3,15 @@
 
 int main() {
     // Declaração das variáveis
-    char estado1[19], estado2[19]; 
-    char codigo1[3], codigo2[3];
-    char cidade1[40], cidade2[40];
-    int populacao1, populacao2;
-    float area1, area2;
-    float PIB1, PIB2;
-    int pontosT1, pontosT2;
-    int enter;
+    char estado1[19], estado2[19];   // Nome do estado
+    char codigo1[3], codigo2[3];  // Código da carta
+    char cidade1[40], cidade2[40];  // Nome da cidade
+    int populacao1, populacao2;  // População da cidade
+    float area1, area2;  // Área da cidade
+    float PIB1, PIB2;  // PIB da cidade
+    int pontosT1, pontosT2;  // Número de Pontos Turísticos
+    float dp1,dp2;  // Densidade Populacional
+    float PIB_C1, PIB_C2;  // PIB per Capita
 
     // Início do programa
 
@@ -28,13 +29,13 @@ int main() {
     fgets(cidade1, 40, stdin);  // Lê o nome da cidade
     cidade1[strcspn(cidade1, "\n")] = 0; // Remove o '\n' do final da string
 
-    printf("População: ");
+    printf("População (somente números):");
     scanf("%d", &populacao1);  // Lê a população da cidade
 
-    printf("Área da cidade: (somente números)");
+    printf("Área da cidade (somente números):");
     scanf("%f", &area1);  // Lê a área da cidade
 
-    printf("PIB da cidade: (somente números)");
+    printf("PIB da cidade (somente números):");
     scanf("%f" , &PIB1);  // Lê o PIB da cidade
 
     printf("N° de Pontos Turísticos: ");
@@ -64,13 +65,13 @@ int main() {
     fgets(cidade2, 40, stdin);  // Lê o nome da cidade
     cidade2[strcspn(cidade2, "\n")] = 0; // Remove o '\n' do final da string
 
-    printf("População: ");
+    printf("População (somente números):");
     scanf("%d", &populacao2);  // Lê a população da cidade
 
-    printf("Área da cidade: (somente números)");
+    printf("Área da cidade (somente números):");
     scanf("%f", &area2);  // Lê a área da cidade
 
-    printf("PIB da cidade: (somente números)");
+    printf("PIB da cidade (somente números):");
     scanf("%f" , &PIB2);  // Lê o PIB da cidade
 
     printf("N° de Pontos Turísticos: ");
@@ -82,6 +83,15 @@ int main() {
     printf("\n");
     printf("---------------FIM DO CADASTRO---------------\n");
     printf("\n");
+
+    // Calculo da Densidade Populacional
+    dp1 = (float) (populacao1 / area1);
+    dp2 = (float) (populacao2 / area2);
+
+    // Calculo do PIB per Capita
+    PIB_C1 = (float) (PIB1 / populacao1);
+    PIB_C2 = (float) (PIB2 / populacao2);
+
     printf("---------------INÍCIO DO JOGO---------------\n");
     printf("\n");
     printf("\n");
@@ -92,9 +102,11 @@ int main() {
     printf("Código: %s \n", codigo1);  // Exibe o código da carta
     printf("Cidade: %s \n", cidade1);  // Exibe o nome da cidade
     printf("População: %d \n", populacao1);  // Exibe a população da cidade
-    printf("Área: %f \n", area1);  // Exibe a área da cidade
-    printf("PIB: %f \n", PIB1);  // Exibe o PIB da cidade
+    printf("Área: %.2f \n", area1);  // Exibe a área da cidade
+    printf("PIB: %.2f \n", PIB1);  // Exibe o PIB da cidade
     printf("Pontos Turisticos: %d \n", pontosT1);  // Exibe o número de pontos turísticos
+    printf("Densidade Populacional: %.2f hab/km² \n" , dp1);  // Exibe a densidade populacional
+    printf("PIB per Capita: R$%.2f \n" , PIB_C1);  // Exibe o PIB per capita
 
     printf("\n");
     printf("------------------------------------------\n");
@@ -105,10 +117,11 @@ int main() {
     printf("Código: %s \n", codigo2);  // Exibe o código da carta
     printf("Cidade: %s \n", cidade2);  // Exibe o nome da cidade
     printf("População: %d \n", populacao2);  // Exibe a população da cidade
-    printf("Área: %f \n", area2);  // Exibe a área da cidade
-    printf("PIB: %f \n", PIB2);  // Exibe o PIB da cidade
+    printf("Área: %.2f \n", area2);  // Exibe a área da cidade
+    printf("PIB: %.2f \n", PIB2);  // Exibe o PIB da cidade
     printf("Pontos Turisticos: %d \n", pontosT2);  // Exibe o número de pontos turísticos
-
+    printf("Densidade Populacional: %.2f hab/km² \n" , dp2);  // Exibe a densidade populacional
+    printf("PIB per Capita: R$%.2f \n" , PIB_C2);  // Exibe o PIB per capita
 
 
     return 0;
